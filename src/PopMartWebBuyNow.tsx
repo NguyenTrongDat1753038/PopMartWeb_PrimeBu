@@ -218,11 +218,20 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-transparent text-neutral-800 p-4 md:p-6">
-      <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
+      <div className="mx-auto w-full space-y-4 md:space-y-6">
+        {/* Background image (uses base URL for GitHub Pages) */}
+        <div className="fixed inset-0 -z-10">
+          <img
+            src={import.meta.env.BASE_URL + 'img/wallpaper.jpg'}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         <header className="py-2 flex justify-center">
           <h1 className="text-xl md:text-2xl font-bold text-center">
             <span className="inline-flex items-center gap-2 justify-center bg-white/80 backdrop-blur-sm px-3 md:px-4 py-2 rounded-2xl shadow-md ring-1 ring-black/5">
-              <img src="/img/popmart_img.png" alt="Pop Mart" className="h-6 md:h-8 inline-block" />
+              <img src={import.meta.env.BASE_URL + 'img/popmart_img.png'} alt="Pop Mart" className="h-6 md:h-8 inline-block" />
               <span className="text-neutral-900">BUYNOW Link Builder</span>
             </span>
           </h1>
@@ -270,7 +279,7 @@ export default function App() {
         </section> */}
 
         {/* Controls */}
-        <section className="bg-white rounded-2xl shadow p-4 md:p-6 space-y-4">
+        <section className="bg-white rounded-2xl shadow p-4 md:p-6 space-y-4 w-full md:w-[70%] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="space-y-2 text-sm md:text-base">
               <label className="text-sm font-medium">Chọn sản phẩm</label>
