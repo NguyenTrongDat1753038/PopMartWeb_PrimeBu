@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: base document styles */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  /* Wallpaper background */
+  background-image: url('/img/wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

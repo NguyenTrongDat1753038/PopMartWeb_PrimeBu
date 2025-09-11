@@ -1,0 +1,9 @@
+Name,URL,skuid_single,skuid_set
+Labubu V1 Exciting Macaron,https://www.popmart.com/vn/products/6900/THE-MONSTERS---Exciting-Macaron-Vinyl-Face-Blind-Box-Copy,10546,10547
+Labubu V2 Have a Seat,https://www.popmart.com/vn/products/6898/THE-MONSTERS---Have-a-Seat-Vinyl-Plush-Blind-Box,10542,10543
+Labubu V3 Big Into Energy, https://www.popmart.com/vn/products/6890/THE-MONSTERS-Big-into-Energy-Series-Vinyl-Plush-Pendant-Blind-Box, 10528, 10529
+Pin For Love V4 N-Z,https://www.popmart.com/vn/products/6938/THE-MONSTERS-PIN-FOR-LOVE-SERIES-Vinyl-Plush-Pendant-Blind-Box-(N-Z),10612,10613
+Pin For Love V4 A-M,https://www.popmart.com/vn/products/6939/THE-MONSTERS-PIN-FOR-LOVE-SERIES-Vinyl-Plush-Pendant-Blind-Box-(A-M),10614,10615
+Rock the Universe 7 màu,https://www.popmart.com/vn/products/6975/THE-MONSTERS-Big-into-Energy-Series-ROCK-THE-UNIVERSE-Vinyl-Plush-Doll,,10667
+Zimomo trắng,https://www.popmart.com/vn/products/7245/THE-MONSTERS---ANGEL-IN-CLOUDS-Vinyl-Face-Doll,,11123
+Zimomo nâu,https://www.popmart.com/vn/products/7244/THE-MONSTERS---I-FOUND-YOU-Vinyl-Face-Doll,,11122
