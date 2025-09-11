@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 // Load initial data from project root via Vite raw import
 // Vite allows importing text files with ?raw
 // This points to the root-level Data.txt from within src/
-import defaultData from "../Data.txt?raw";
+import defaultData from "../Data.txt";
 
 /**
  * Pop Mart BUYNOW Link Builder
@@ -128,21 +128,10 @@ export default function App() {
   }, [selectedIndex, items]);
 
   const maxQty = useMemo(() => {
-    if (variant === "single") {
-      const name = current?.name?.toLowerCase() || "";
-      // Labubu V1/V2/V3 => max 12 for single box
-      if (name.includes("labubu v1") || name.includes("labubu v2") || name.includes("labubu v3")) {
-        return 12;
-      }
-      // Pin For Love => max 14 for single box
-      if (name.includes("pin for love")) {
-        return 14;
-      }
-      return 28;
-    }
+    if (variant === "single") return 28;
     if (variant === "set") return 2;
     return 1;
-  }, [variant, current]);
+  }, [variant]);
 
   const handleVariantChange = (v: Variant) => {
     setVariant(v);
@@ -217,24 +206,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-neutral-800 p-4 md:p-6">
-      <div className="mx-auto w-full space-y-4 md:space-y-6">
-        {/* Background image (uses base URL for GitHub Pages) */}
-        <div className="fixed inset-0 -z-10">
-          <img
-            src={import.meta.env.BASE_URL + 'img/wallpaper.jpg'}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <header className="py-2 flex justify-center">
-          <h1 className="text-xl md:text-2xl font-bold text-center">
-            <span className="inline-flex items-center gap-2 justify-center bg-white/80 backdrop-blur-sm px-3 md:px-4 py-2 rounded-2xl shadow-md ring-1 ring-black/5">
-              <img src={import.meta.env.BASE_URL + 'img/popmart_img.png'} alt="Pop Mart" className="h-6 md:h-8 inline-block" />
-              <span className="text-neutral-900">BUYNOW Link Builder</span>
-            </span>
-          </h1>
+    <div className="min-h-screen bg-neutral-50 text-neutral-800 p-4 md:p-6">
+      <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
+        <header className="py-2">
+          <h1 className="text-xl md:text-2xl font-bold text-center">Pop Mart BUYNOW Link Builder</h1>
           {/* <button
             onClick={() => fileInputRef.current?.click()}
             className="px-3 py-2 rounded-xl bg-white shadow border hover:bg-neutral-50 text-sm"
@@ -279,7 +254,7 @@ export default function App() {
         </section> */}
 
         {/* Controls */}
-        <section className="bg-white rounded-2xl shadow p-4 md:p-6 space-y-4 w-full md:w-[70%] mx-auto">
+        <section className="bg-white rounded-2xl shadow p-4 md:p-6 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="space-y-2 text-sm md:text-base">
               <label className="text-sm font-medium">Chọn sản phẩm</label>
@@ -319,17 +294,16 @@ export default function App() {
             <div className="space-y-2 text-sm md:text-base">
               <label className="text-sm font-medium">Chọn phân loại</label>
               <div className="flex gap-3 items-center">
-                {current?.skuSingle && (
-                  <label className="inline-flex items-center gap-2">
-                    <input
-                      type="radio"
-                      name="variant"
-                      checked={variant === "single"}
-                      onChange={() => handleVariantChange("single")}
-                    />
-                    <span>Single Box</span>
-                  </label>
-                )}
+                <label className={`inline-flex items-center gap-2 ${!current?.skuSingle ? "opacity-40" : ""}`}>
+                  <input
+                    type="radio"
+                    name="variant"
+                    disabled={!current?.skuSingle}
+                    checked={variant === "single"}
+                    onChange={() => handleVariantChange("single")}
+                  />
+                  <span>Single Box</span>
+                </label>
                 <label className={`inline-flex items-center gap-2 ${!current?.skuSet ? "opacity-40" : ""}`}>
                   <input
                     type="radio"
@@ -353,17 +327,10 @@ export default function App() {
                 onChange={(e) => setQty(clampQty(parseInt(e.target.value || "1", 10)))}
                 className="w-full border rounded-xl p-3 md:p-2"
               />
-              <p className="text-xs text-neutral-500 hidden">
-                {variant === "single" && "Tối đa 28 hộp"}
+              <p className="text-xs text-neutral-500">
+                {variant === "single" && "Tối đa 14 hộp"}
                 {variant === "set" && "Tối đa 2 set"}
                 {!variant && "Hãy chọn phân loại"}
-              </p>
-              <p className="text-xs text-neutral-500">
-                {variant
-                  ? variant === "single"
-                    ? `Tối đa ${maxQty} hộp`
-                    : `Tối đa ${maxQty} set`
-                  : "Hãy chọn phân loại"}
               </p>
             </div>
           </div>
@@ -409,6 +376,7 @@ export default function App() {
             . Ứng dụng sẽ tự trích <code>spuId</code> từ đường dẫn dạng
             <code className="mx-1">/products/{"{spuId}"}/{"{slug}"}</code> và chuyển slug thành chữ
             thường làm <code>spuTitle</code>.
+          </p>
         </div>
         
       </div>
