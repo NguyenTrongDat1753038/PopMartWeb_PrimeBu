@@ -2,7 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 // Load initial data from project root via Vite raw import
 // Vite allows importing text files with ?raw
 // This points to the root-level Data.txt from within src/
-import defaultData from "../Data.txt";
+import defaultData from "../Data.txt?raw";
+
+const wallpaperUrl = new URL("../img/wallpaper.jpg", import.meta.url).href;
+const popmartLogoUrl = new URL("../img/popmart_img.png", import.meta.url).href;
 
 /**
  * Pop Mart BUYNOW Link Builder
@@ -206,10 +209,24 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-800 p-4 md:p-6">
-      <div className="max-w-4xl mx-auto space-y-4 md:space-y-6">
+    <div
+      className="min-h-screen text-neutral-800 p-4 md:p-6 bg-cover bg-center bg-fixed"
+      style={{ backgroundImage: `url(${wallpaperUrl})` }}
+    >
+
+      <div className="max-w-4xl mx-auto space-y-4 md:space-y-6 rounded-3xl bg-white/80 backdrop-blur-md shadow-2xl px-4 md:px-8 py-6">
         <header className="py-2">
-          <h1 className="text-xl md:text-2xl font-bold text-center">Pop Mart BUYNOW Link Builder</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-center">
+            <span className="inline-flex items-center justify-center gap-3 px-5 py-3 rounded-2xl bg-white/90 shadow-xl backdrop-blur-sm">
+              <span className="sr-only">Pop Mart</span>
+              <img
+                src={popmartLogoUrl}
+                alt="Pop Mart"
+                className="h-10 md:h-12 w-auto drop-shadow-[0_8px_16px_rgba(0,0,0,0.35)]"
+              />
+              <span className="uppercase tracking-wide text-neutral-900">BUYNOW Link Builder</span>
+            </span>
+          </h1>
           {/* <button
             onClick={() => fileInputRef.current?.click()}
             className="px-3 py-2 rounded-xl bg-white shadow border hover:bg-neutral-50 text-sm"
@@ -370,7 +387,7 @@ export default function App() {
         </section>
 
         <div className="hidden">
-          
+          <p>
             Quy tắc: Link BUYNOW dạng
             <code className="mx-1">/order-confirmation?spuId=...&skuId=...&count=...&spuTitle=...</code>
             . Ứng dụng sẽ tự trích <code>spuId</code> từ đường dẫn dạng
